@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableViewController.h"
 
-@interface TasksListTableViewController : UITableViewController
+@interface TasksListTableViewController : TableViewController
 
 @end

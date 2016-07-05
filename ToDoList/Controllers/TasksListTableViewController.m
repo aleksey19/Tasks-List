@@ -14,9 +14,17 @@
 
 @implementation TasksListTableViewController
 
+//Archiving
+//NSData *data = [NSKeyedArchiver archivedDataWithRootObject:notes];
+//[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"notes"]
+
+//Extracting
+//NSData *notesData = [[NSUserDefaults standardUserDefaults] objectForKey:@"notes"];
+//NSArray *notes = [NSKeyedUnarchiver unarchiveObjectWithData:notesData];
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setupView];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -24,32 +32,35 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupView
+{
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationController.topViewController.title = @"Tasks";
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewTask:)];
+    self.navigationItem.rightBarButtonItem = addButton;
+}
+
+- (void)insertNewTask:(id)sender
+{
+    if (self.dataSource) {
+#warning Insert new task here
+    }
+    
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+//    
+//    // Configure the cell...
+//    
+//    return cell;
+//}
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.

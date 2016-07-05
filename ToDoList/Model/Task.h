@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Task : NSObject
+@interface Task : NSObject <NSCoding, NSCopying>
+
+@property (nonatomic) NSInteger taskId;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSDate *modifiedDate;
+@property (nonatomic) BOOL completed;
+@property (nonatomic, strong) Task *parentTask;
+@property (nonatomic, strong) NSMutableArray *subtasks;
+@property (nonatomic) NSInteger subtasksCount;
+@property (nonatomic) BOOL isAllSubtasksCompleted;
 
 @end

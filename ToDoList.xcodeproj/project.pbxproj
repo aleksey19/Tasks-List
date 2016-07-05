@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		5B67C5D61D2C21E5005ACE1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5D51D2C21E5005ACE1E /* main.m */; };
 		5B67C5D91D2C21E5005ACE1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5D81D2C21E5005ACE1E /* AppDelegate.m */; };
-		5B67C5DC1D2C21E5005ACE1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5DB1D2C21E5005ACE1E /* ViewController.m */; };
 		5B67C5DF1D2C21E5005ACE1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67C5DD1D2C21E5005ACE1E /* Main.storyboard */; };
 		5B67C5E11D2C21E5005ACE1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B67C5E01D2C21E5005ACE1E /* Assets.xcassets */; };
 		5B67C5E41D2C21E5005ACE1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67C5E21D2C21E5005ACE1E /* LaunchScreen.storyboard */; };
 		5B67C5EF1D2C21E6005ACE1E /* ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5EE1D2C21E6005ACE1E /* ToDoListTests.m */; };
 		5B67C5FA1D2C21E6005ACE1E /* ToDoListUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5F91D2C21E6005ACE1E /* ToDoListUITests.m */; };
+		5B67C60B1D2C224C005ACE1E /* TasksListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C60A1D2C224C005ACE1E /* TasksListTableViewController.m */; };
+		5B67C60E1D2C2459005ACE1E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C60D1D2C2459005ACE1E /* TableViewController.m */; };
+		5B67C6111D2C2673005ACE1E /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C6101D2C2673005ACE1E /* Task.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +41,6 @@
 		5B67C5D51D2C21E5005ACE1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B67C5D71D2C21E5005ACE1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B67C5D81D2C21E5005ACE1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5B67C5DA1D2C21E5005ACE1E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5B67C5DB1D2C21E5005ACE1E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5B67C5DE1D2C21E5005ACE1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B67C5E01D2C21E5005ACE1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B67C5E31D2C21E5005ACE1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +51,12 @@
 		5B67C5F51D2C21E6005ACE1E /* ToDoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67C5F91D2C21E6005ACE1E /* ToDoListUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListUITests.m; sourceTree = "<group>"; };
 		5B67C5FB1D2C21E6005ACE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B67C6091D2C224C005ACE1E /* TasksListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TasksListTableViewController.h; path = Controllers/TasksListTableViewController.h; sourceTree = "<group>"; };
+		5B67C60A1D2C224C005ACE1E /* TasksListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TasksListTableViewController.m; path = Controllers/TasksListTableViewController.m; sourceTree = "<group>"; };
+		5B67C60C1D2C2459005ACE1E /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableViewController.h; path = Controllers/TableViewController.h; sourceTree = "<group>"; };
+		5B67C60D1D2C2459005ACE1E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = Controllers/TableViewController.m; sourceTree = "<group>"; };
+		5B67C60F1D2C2673005ACE1E /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Model/Task.h; sourceTree = "<group>"; };
+		5B67C6101D2C2673005ACE1E /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Model/Task.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +107,10 @@
 		5B67C5D31D2C21E5005ACE1E /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				5B67C6081D2C2228005ACE1E /* Controllers */,
+				5B67C6071D2C221F005ACE1E /* Model */,
 				5B67C5D71D2C21E5005ACE1E /* AppDelegate.h */,
 				5B67C5D81D2C21E5005ACE1E /* AppDelegate.m */,
-				5B67C5DA1D2C21E5005ACE1E /* ViewController.h */,
-				5B67C5DB1D2C21E5005ACE1E /* ViewController.m */,
 				5B67C5DD1D2C21E5005ACE1E /* Main.storyboard */,
 				5B67C5E01D2C21E5005ACE1E /* Assets.xcassets */,
 				5B67C5E21D2C21E5005ACE1E /* LaunchScreen.storyboard */,
@@ -138,6 +144,26 @@
 				5B67C5FB1D2C21E6005ACE1E /* Info.plist */,
 			);
 			path = ToDoListUITests;
+			sourceTree = "<group>";
+		};
+		5B67C6071D2C221F005ACE1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B67C60F1D2C2673005ACE1E /* Task.h */,
+				5B67C6101D2C2673005ACE1E /* Task.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5B67C6081D2C2228005ACE1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B67C6091D2C224C005ACE1E /* TasksListTableViewController.h */,
+				5B67C60A1D2C224C005ACE1E /* TasksListTableViewController.m */,
+				5B67C60C1D2C2459005ACE1E /* TableViewController.h */,
+				5B67C60D1D2C2459005ACE1E /* TableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,9 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B67C5DC1D2C21E5005ACE1E /* ViewController.m in Sources */,
+				5B67C6111D2C2673005ACE1E /* Task.m in Sources */,
 				5B67C5D91D2C21E5005ACE1E /* AppDelegate.m in Sources */,
+				5B67C60B1D2C224C005ACE1E /* TasksListTableViewController.m in Sources */,
 				5B67C5D61D2C21E5005ACE1E /* main.m in Sources */,
+				5B67C60E1D2C2459005ACE1E /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
