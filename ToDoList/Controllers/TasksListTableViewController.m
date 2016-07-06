@@ -7,103 +7,146 @@
 //
 
 #import "TasksListTableViewController.h"
+#import "SubtasksListTableViewController.h"
+
+#import "ToDoListDataBase.h"
+#import "ToDoListDocument.h"
+
+#define TASK_COMPLETED_COLOR [UIColor colorWithRed:180/255.0 green:255/255.0 blue:177/255.0 alpha:1.0]
+#define TASK_INCOMPLETED_COLOR [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:0.31]
 
 @interface TasksListTableViewController ()
+{
+    NSInteger indexOfSelectedRow;
+}
+
+@property (nonatomic, strong) ToDoListDocument *toDoListDoc;
+@property (nonatomic, strong) UIAlertController *alertController;
 
 @end
 
 @implementation TasksListTableViewController
 
-//Archiving
-//NSData *data = [NSKeyedArchiver archivedDataWithRootObject:notes];
-//[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"notes"]
-
-//Extracting
-//NSData *notesData = [[NSUserDefaults standardUserDefaults] objectForKey:@"notes"];
-//NSArray *notes = [NSKeyedUnarchiver unarchiveObjectWithData:notesData];
+- (UIAlertController *)alertController
+{
+    if (!_alertController) {
+        _alertController = [UIAlertController alertControllerWithTitle:@"Add new task" message:@"Type task title and press add" preferredStyle:UIAlertControllerStyleAlert];
+        [self setupAlertController];
+    }
+    return _alertController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self loadTasks];
 }
 
 - (void)setupView
 {
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     self.navigationController.topViewController.title = @"Tasks";
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewTask:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+- (void)setupAlertController
+{
+    UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self addNewTaskWithTitle:[self.alertController.textFields lastObject].text];
+        [self.alertController.textFields lastObject].text = @"";
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [self.alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [self.alertController addAction:addAction];
+    [self.alertController addAction:cancelAction];
+    
+    [self.alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"Enter task title";
+    }];
+}
+
+- (void)loadTasks
+{
+    self.dataSource = [ToDoListDataBase loadTasksDocument];
 }
 
 - (void)insertNewTask:(id)sender
 {
-    if (self.dataSource) {
-#warning Insert new task here
+    self.toDoListDoc = [[ToDoListDocument alloc] init];
+    [self presentViewController:self.alertController animated:YES completion:nil];
+}
+
+- (void)addNewTaskWithTitle:(NSString *)title
+{
+    if (!title.length) {
+        title = @"No title";
     }
     
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    self.toDoListDoc = [[ToDoListDocument alloc] initWithTitle:title parentTask:nil];
+    self.toDoListDoc.taskData.modifiedDate = [NSDate date];
+    self.toDoListDoc.taskData.completed = NO;
+    self.toDoListDoc.taskData.subtasksCount = 0;
+    self.toDoListDoc.taskData.subtasks = [NSMutableArray new];
+    self.toDoListDoc.taskData.isAllSubtasksCompleted = NO;
+    
+    [self.toDoListDoc saveData];
+    
+    [self.dataSource addObject:self.toDoListDoc];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataSource.count-1 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    self.toDoListDoc = nil;
 }
 
 #pragma mark - Table view data source
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskCell" forIndexPath:indexPath];
+    
+    ToDoListDocument *doc = self.dataSource[indexPath.row];
+    
+    NSLocale* currentLocale = [NSLocale currentLocale];
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    cell.textLabel.text = doc.taskData.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [doc.taskData.modifiedDate descriptionWithLocale:currentLocale]];
+    doc.taskData.completed ? (cell.backgroundColor = TASK_COMPLETED_COLOR) : (cell.backgroundColor = TASK_INCOMPLETED_COLOR);
+    
+    return cell;
 }
-*/
 
-/*
-// Override to support editing the table view.
+#pragma mark - Table view delegate
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        ToDoListDocument *taskDoc = [self.dataSource objectAtIndex:indexPath.row];
+        
+        [taskDoc deleteData];
+        [self.dataSource removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        
+        [self.tableView reloadData];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    indexOfSelectedRow = indexPath.row;
+    return indexPath;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailTaskSegue"]) {
+        if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navVC = [segue destinationViewController];
+            SubtasksListTableViewController *destVC = (SubtasksListTableViewController *)navVC.topViewController;
+            destVC.taskDoc = self.dataSource[indexOfSelectedRow];
+        }
+    }
 }
-*/
 
 @end

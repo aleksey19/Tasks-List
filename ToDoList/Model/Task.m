@@ -19,6 +19,15 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
 
 @implementation Task
 
+- (instancetype)initWithTitle:(NSString *)title parentTask:(Task *)parentTask
+{
+    if (self = [super init]) {
+        _title = [title copy];
+        _parentTask = [parentTask copy];
+    }
+    return self;
+}
+
 #pragma mark - NSCoding protocol
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -30,7 +39,7 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
         self.completed = [aDecoder decodeBoolForKey:completedKey];
         self.parentTask = [aDecoder decodeObjectOfClass:[Task class] forKey:parentTaskKey];
         self.subtasks = [aDecoder decodeObjectOfClass:[NSMutableArray class] forKey:subtasksKey];
-        self.subtasksCount = [aDecoder decodeIntegerForKey:subtasksKey];
+        self.subtasksCount = [aDecoder decodeIntegerForKey:subtasksCountKey];
         self.isAllSubtasksCompleted = [aDecoder decodeBoolForKey:isAllSubtasksCompletedKey];
     }
     return self;
@@ -64,6 +73,17 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
         [copy setIsAllSubtasksCompleted:self.isAllSubtasksCompleted];
     }
     return copy;
+}
+
+#pragma mark - isEqual
+
+- (BOOL)isEqual:(id)object{
+    
+    if (![object isMemberOfClass:[Task class]]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

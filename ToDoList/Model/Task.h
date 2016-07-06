@@ -19,4 +19,6 @@
 @property (nonatomic) NSInteger subtasksCount;
 @property (nonatomic) BOOL isAllSubtasksCompleted;
 
+- (instancetype)initWithTitle:(NSString *)title parentTask:(Task *)parentTask;
+
 @end

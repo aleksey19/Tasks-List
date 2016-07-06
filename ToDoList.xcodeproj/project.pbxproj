@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B5DEF0D1D2D6D6D002CDB04 /* ToDoListDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF0C1D2D6D6D002CDB04 /* ToDoListDocument.m */; };
+		5B5DEF101D2D6FBA002CDB04 /* ToDoListDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF0F1D2D6FBA002CDB04 /* ToDoListDataBase.m */; };
+		5B5DEF131D2D9B86002CDB04 /* SubtasksListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF121D2D9B86002CDB04 /* SubtasksListTableViewController.m */; };
 		5B67C5D61D2C21E5005ACE1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5D51D2C21E5005ACE1E /* main.m */; };
 		5B67C5D91D2C21E5005ACE1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C5D81D2C21E5005ACE1E /* AppDelegate.m */; };
 		5B67C5DF1D2C21E5005ACE1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B67C5DD1D2C21E5005ACE1E /* Main.storyboard */; };
@@ -37,6 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B5DEF0B1D2D6D6D002CDB04 /* ToDoListDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoListDocument.h; path = Model/ToDoListDocument.h; sourceTree = "<group>"; };
+		5B5DEF0C1D2D6D6D002CDB04 /* ToDoListDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoListDocument.m; path = Model/ToDoListDocument.m; sourceTree = "<group>"; };
+		5B5DEF0E1D2D6FBA002CDB04 /* ToDoListDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoListDataBase.h; path = Model/ToDoListDataBase.h; sourceTree = "<group>"; };
+		5B5DEF0F1D2D6FBA002CDB04 /* ToDoListDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoListDataBase.m; path = Model/ToDoListDataBase.m; sourceTree = "<group>"; };
+		5B5DEF111D2D9B86002CDB04 /* SubtasksListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtasksListTableViewController.h; path = Controllers/SubtasksListTableViewController.h; sourceTree = "<group>"; };
+		5B5DEF121D2D9B86002CDB04 /* SubtasksListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtasksListTableViewController.m; path = Controllers/SubtasksListTableViewController.m; sourceTree = "<group>"; };
 		5B67C5D11D2C21E5005ACE1E /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B67C5D51D2C21E5005ACE1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B67C5D71D2C21E5005ACE1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +160,10 @@
 			children = (
 				5B67C60F1D2C2673005ACE1E /* Task.h */,
 				5B67C6101D2C2673005ACE1E /* Task.m */,
+				5B5DEF0B1D2D6D6D002CDB04 /* ToDoListDocument.h */,
+				5B5DEF0C1D2D6D6D002CDB04 /* ToDoListDocument.m */,
+				5B5DEF0E1D2D6FBA002CDB04 /* ToDoListDataBase.h */,
+				5B5DEF0F1D2D6FBA002CDB04 /* ToDoListDataBase.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -162,6 +175,8 @@
 				5B67C60A1D2C224C005ACE1E /* TasksListTableViewController.m */,
 				5B67C60C1D2C2459005ACE1E /* TableViewController.h */,
 				5B67C60D1D2C2459005ACE1E /* TableViewController.m */,
+				5B5DEF111D2D9B86002CDB04 /* SubtasksListTableViewController.h */,
+				5B5DEF121D2D9B86002CDB04 /* SubtasksListTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -298,7 +313,10 @@
 			files = (
 				5B67C6111D2C2673005ACE1E /* Task.m in Sources */,
 				5B67C5D91D2C21E5005ACE1E /* AppDelegate.m in Sources */,
+				5B5DEF101D2D6FBA002CDB04 /* ToDoListDataBase.m in Sources */,
+				5B5DEF0D1D2D6D6D002CDB04 /* ToDoListDocument.m in Sources */,
 				5B67C60B1D2C224C005ACE1E /* TasksListTableViewController.m in Sources */,
+				5B5DEF131D2D9B86002CDB04 /* SubtasksListTableViewController.m in Sources */,
 				5B67C5D61D2C21E5005ACE1E /* main.m in Sources */,
 				5B67C60E1D2C2459005ACE1E /* TableViewController.m in Sources */,
 			);
@@ -526,6 +544,7 @@
 				5B67C6001D2C21E6005ACE1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B67C6011D2C21E6005ACE1E /* Build configuration list for PBXNativeTarget "ToDoListTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +553,7 @@
 				5B67C6031D2C21E6005ACE1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B67C6041D2C21E6005ACE1E /* Build configuration list for PBXNativeTarget "ToDoListUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +562,7 @@
 				5B67C6061D2C21E6005ACE1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
