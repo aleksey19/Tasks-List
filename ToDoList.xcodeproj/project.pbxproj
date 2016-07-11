@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B582B1D1D34228900E67569 /* TasksListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B582B1C1D34228900E67569 /* TasksListTableViewControllerTests.m */; };
 		5B5DEF0D1D2D6D6D002CDB04 /* ToDoListDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF0C1D2D6D6D002CDB04 /* ToDoListDocument.m */; };
 		5B5DEF101D2D6FBA002CDB04 /* ToDoListDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF0F1D2D6FBA002CDB04 /* ToDoListDataBase.m */; };
 		5B5DEF131D2D9B86002CDB04 /* SubtasksListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B5DEF121D2D9B86002CDB04 /* SubtasksListTableViewController.m */; };
@@ -20,6 +21,8 @@
 		5B67C60B1D2C224C005ACE1E /* TasksListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C60A1D2C224C005ACE1E /* TasksListTableViewController.m */; };
 		5B67C60E1D2C2459005ACE1E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C60D1D2C2459005ACE1E /* TableViewController.m */; };
 		5B67C6111D2C2673005ACE1E /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B67C6101D2C2673005ACE1E /* Task.m */; };
+		5BEE4AB71D310A9A0091DC3E /* TestTasksOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BEE4AB61D310A9A0091DC3E /* TestTasksOperations.m */; };
+		5BEE4AB91D3122650091DC3E /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5BEE4AB81D3122650091DC3E /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B582B1B1D34228900E67569 /* TasksListTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksListTableViewControllerTests.h; sourceTree = "<group>"; };
+		5B582B1C1D34228900E67569 /* TasksListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksListTableViewControllerTests.m; sourceTree = "<group>"; };
 		5B5DEF0B1D2D6D6D002CDB04 /* ToDoListDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoListDocument.h; path = Model/ToDoListDocument.h; sourceTree = "<group>"; };
 		5B5DEF0C1D2D6D6D002CDB04 /* ToDoListDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToDoListDocument.m; path = Model/ToDoListDocument.m; sourceTree = "<group>"; };
 		5B5DEF0E1D2D6FBA002CDB04 /* ToDoListDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToDoListDataBase.h; path = Model/ToDoListDataBase.h; sourceTree = "<group>"; };
@@ -66,6 +71,9 @@
 		5B67C60D1D2C2459005ACE1E /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = Controllers/TableViewController.m; sourceTree = "<group>"; };
 		5B67C60F1D2C2673005ACE1E /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Model/Task.h; sourceTree = "<group>"; };
 		5B67C6101D2C2673005ACE1E /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Model/Task.m; sourceTree = "<group>"; };
+		5BEE4AB51D310A9A0091DC3E /* TestTasksOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTasksOperations.h; sourceTree = "<group>"; };
+		5BEE4AB61D310A9A0091DC3E /* TestTasksOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTasksOperations.m; sourceTree = "<group>"; };
+		5BEE4AB81D3122650091DC3E /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 		5B67C5C81D2C21E5005ACE1E = {
 			isa = PBXGroup;
 			children = (
+				5BEE4AB81D3122650091DC3E /* README */,
 				5B67C5D31D2C21E5005ACE1E /* ToDoList */,
 				5B67C5ED1D2C21E6005ACE1E /* ToDoListTests */,
 				5B67C5F81D2C21E6005ACE1E /* ToDoListUITests */,
@@ -142,6 +151,10 @@
 			children = (
 				5B67C5EE1D2C21E6005ACE1E /* ToDoListTests.m */,
 				5B67C5F01D2C21E6005ACE1E /* Info.plist */,
+				5BEE4AB51D310A9A0091DC3E /* TestTasksOperations.h */,
+				5BEE4AB61D310A9A0091DC3E /* TestTasksOperations.m */,
+				5B582B1B1D34228900E67569 /* TasksListTableViewControllerTests.h */,
+				5B582B1C1D34228900E67569 /* TasksListTableViewControllerTests.m */,
 			);
 			path = ToDoListTests;
 			sourceTree = "<group>";
@@ -294,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEE4AB91D3122650091DC3E /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +340,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEE4AB71D310A9A0091DC3E /* TestTasksOperations.m in Sources */,
 				5B67C5EF1D2C21E6005ACE1E /* ToDoListTests.m in Sources */,
+				5B582B1D1D34228900E67569 /* TasksListTableViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aleksey.ToDoList;
@@ -472,6 +489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aleksey.ToDoList;

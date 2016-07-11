@@ -77,13 +77,43 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
 
 #pragma mark - isEqual
 
-- (BOOL)isEqual:(id)object{
-    
-    if (![object isMemberOfClass:[Task class]]) {
+- (BOOL)isEqualToTask:(Task *)task
+{
+    if (!task) {
         return NO;
-    } else {
+    }
+    
+    BOOL haveEqualTitles = (!self.title && !task.title) || ([self.title isEqualToString:task.title]);
+    BOOL haveEqualSetCompleted = (!self.completed && !task.completed) || (self.completed == task.completed);
+    BOOL haveEqualParentTask = (!self.parentTask && !task.parentTask) || ([self.parentTask isEqualToTask:task.parentTask]);
+    BOOL haveEqualSubtasksCount = (!self.subtasksCount && !task.subtasksCount) || (self.subtasksCount == task.subtasksCount);
+    BOOL haveEqualAllSubtasks = YES;
+    if (haveEqualSubtasksCount) {
+        for (int i = 0; i < self.subtasksCount; i++) {
+            BOOL haveEqualSubtask = (!self.subtasks[i] && !task.subtasks[i]) || ([self.subtasks[i] isEqualToTask:task.subtasks[i]]);
+            haveEqualAllSubtasks = haveEqualAllSubtasks && haveEqualSubtask;
+        }
+    }
+    BOOL haveEqualAllSubtasksCompleted = (!self.isAllSubtasksCompleted && !task.isAllSubtasksCompleted) || (self.isAllSubtasksCompleted == task.isAllSubtasksCompleted);
+    
+    return haveEqualTitles && haveEqualSetCompleted && haveEqualParentTask && haveEqualSubtasksCount && haveEqualAllSubtasks && haveEqualAllSubtasksCompleted;
+}
+
+- (BOOL)isEqual:(id)object{
+    if (self == object) {
         return YES;
     }
+    
+    if (![object isKindOfClass:[Task class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToTask:object];
+}
+
+- (NSUInteger)hash
+{
+    return [self.title hash] ^ [self.parentTask hash] ^ [self.subtasks hash];
 }
 
 @end

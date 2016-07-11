@@ -1,0 +1,20 @@
+    App consist of two table view controllers. First displays a list of tasks with functionality: add task, delete
+task. On tap app pushes second view with subtasks for selected task. You can add, delete or mark subtask as done. Also
+possible to mark all subtasks as done or delete them all from app. Second displays a list of subtasks for selected
+task.
+
+
+
+
+
+
+
+
+
+
+PROJECT ROOT:
+ToDoList
+    Controllers
+    Model
+    Supporting Files
+ToDoListTests
