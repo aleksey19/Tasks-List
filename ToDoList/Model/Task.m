@@ -28,6 +28,11 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
     return self;
 }
 
+- (NSInteger)subtasksCount
+{
+    return self.subtasks.count;
+}
+
 #pragma mark - NSCoding protocol
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -39,7 +44,6 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
         self.completed = [aDecoder decodeBoolForKey:completedKey];
         self.parentTask = [aDecoder decodeObjectOfClass:[Task class] forKey:parentTaskKey];
         self.subtasks = [aDecoder decodeObjectOfClass:[NSMutableArray class] forKey:subtasksKey];
-        self.subtasksCount = [aDecoder decodeIntegerForKey:subtasksCountKey];
         self.isAllSubtasksCompleted = [aDecoder decodeBoolForKey:isAllSubtasksCompletedKey];
     }
     return self;
@@ -53,7 +57,6 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
     [aCoder encodeBool:_completed forKey:completedKey];
     [aCoder encodeObject:_parentTask forKey:parentTaskKey];
     [aCoder encodeObject:_subtasks forKey:subtasksKey];
-    [aCoder encodeInteger:_subtasksCount forKey:subtasksCountKey];
     [aCoder encodeBool:_isAllSubtasksCompleted forKey:isAllSubtasksCompletedKey];
 }
 
@@ -69,7 +72,6 @@ static NSString * isAllSubtasksCompletedKey = @"allSubtasksCompleted";
         [copy setCompleted:self.completed];
         [copy setParentTask:self.parentTask];
         [copy setSubtasks:[self.subtasks copyWithZone:zone]];
-        [copy setSubtasksCount:self.subtasksCount];
         [copy setIsAllSubtasksCompleted:self.isAllSubtasksCompleted];
     }
     return copy;

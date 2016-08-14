@@ -36,6 +36,14 @@
     return _alertController;
 }
 
+#pragma mark - View life cycle
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
@@ -88,7 +96,6 @@
     self.toDoListDoc = [[ToDoListDocument alloc] initWithTitle:title parentTask:nil];
     self.toDoListDoc.taskData.modifiedDate = [NSDate date];
     self.toDoListDoc.taskData.completed = NO;
-    self.toDoListDoc.taskData.subtasksCount = 0;
     self.toDoListDoc.taskData.subtasks = [NSMutableArray new];
     self.toDoListDoc.taskData.isAllSubtasksCompleted = NO;
     
